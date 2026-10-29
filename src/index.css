@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+@theme {
+  --font-epilogue: "Epilogue", sans-serif;
+  --font-courier: "Courier Prime", monospace;
+  --font-space: "Space Grotesk", sans-serif;
+
+  --color-abyssal: #080808;
+  --color-surface-tier1: #121212;
+  --color-surface-tier2: #1a1a1a;
+  --color-surface-container: #201f1f;
+  --color-surface-high: #2a2a2a;
+  --color-surface-highest: #353534;
+  --color-border-obsidian: #272727;
+  --color-crimson: #b00020;
+  --color-crimson-hover: #cb0025;
+  --color-ember: #ff7518;
+  --color-bone: #f5f5f5;
+  --color-silver: #b8b8b8;
+  --color-ash: #666666;
+}
+
+@layer base {
+  * {
+    border-radius: 0 !important;
+  }
+  
+  body {
+    background-color: #080808;
+    color: #e5e2e1;
+    font-family: var(--font-courier), monospace;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-epilogue), sans-serif;
+  }
+}
+
+/* Static Atmospheric Vignette Overlay */
+.vignette-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: radial-gradient(circle at 50% 50%, rgba(8, 8, 8, 0) 55%, rgba(8, 8, 8, 0.96) 100%);
+}
+
+/* Subtle Occult Film Grain / Texture Layer */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Blood Velvet Primary Button */
+.btn-blood-velvet {
+  background-color: #b00020;
+  color: #f5f5f5;
+  font-family: var(--font-space), sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid #b00020;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-blood-velvet:hover:not(:disabled) {
+  box-shadow: inset 0 0 14px rgba(255, 255, 255, 0.22);
+  border-color: #ff7518;
+  background-color: #cb0025;
+}
+
+/* Obsidian Ghost Secondary Button */
+.btn-obsidian-ghost {
+  background-color: #121212;
+  border: 1px solid #272727;
+  color: #b8b8b8;
+  font-family: var(--font-space), sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-obsidian-ghost:hover:not(:disabled) {
+  border-color: #b00020;
+  color: #f5f5f5;
+  background-color: #1a1a1a;
+}
+
+/* Spectral Light Pools (Aura Glows) */
+.aura-crimson {
+  box-shadow: 0 0 25px -5px rgba(176, 0, 32, 0.38);
+}
+
+.aura-ember {
+  box-shadow: 0 0 22px -3px rgba(255, 117, 24, 0.3);
+}
+
+.card-aura-hover {
+  transition: box-shadow 220ms ease, border-color 220ms ease, transform 180ms ease;
+}
+
+.card-aura-hover:hover {
+  box-shadow: 0 0 30px rgba(176, 0, 32, 0.25);
+  border-color: #5b403e;
+}
+
+/* Double Parchment & Dungeon Borders */
+.parchment-frame {
+  border: 1px solid #272727;
+  padding: 3px;
+  background-color: #121212;
+}
+
+.parchment-frame-inner {
+  border: 1px solid rgba(184, 184, 184, 0.16);
+  height: 100%;
+  width: 100%;
+}
+
+/* Tactile Riddle Input Focus */
+.tactile-input {
+  background-color: #1a1a1a;
+  border: 1px solid #272727;
+  color: #f5f5f5;
+  font-family: var(--font-courier), monospace;
+  outline: none;
+  transition: border-color 0s, box-shadow 0s;
+}
+
+.tactile-input:focus {
+  border-color: #ff7518 !important;
+  box-shadow: 0 0 16px -2px rgba(255, 117, 24, 0.32);
+}
+
+/* Candlelight Flicker Animation */
+@keyframes candleFlicker {
+  0%, 100% {
+    opacity: 0.95;
+    box-shadow: 0 0 16px rgba(255, 117, 24, 0.35);
+  }
+  25% {
+    opacity: 0.78;
+    box-shadow: 0 0 10px rgba(255, 117, 24, 0.2);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 22px rgba(255, 117, 24, 0.45);
+  }
+  75% {
+    opacity: 0.88;
+    box-shadow: 0 0 13px rgba(255, 117, 24, 0.28);
+  }
+}
+
+.candle-glow-active {
+  animation: candleFlicker 3.2s infinite ease-in-out;
+}
+
+/* Subtle Heartbeat Pulse */
+@keyframes heartPulse {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.02); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.03); }
+  70% { transform: scale(1); }
+}
+
+.dread-pulse {
+  animation: heartPulse 1.6s infinite ease-out;
+}
+
+/* Custom Scrollbar for Gothic Casefiles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+::-webkit-scrollbar-thumb {
+  background: #272727;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b00020;
+}

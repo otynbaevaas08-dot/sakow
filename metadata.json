@@ -1,0 +1,6 @@
+{
+  "name": "Обсидиан - Лавка Готических Реликвий",
+  "description": "Онлайн-магазин редких готических реликвий, антикварных фолиантов и церемониальных раритетов в Казахстане с расчетом в тенге (₸) и интеграцией Telegram Bot API.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
